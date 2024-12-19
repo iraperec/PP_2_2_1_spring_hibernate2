@@ -1,16 +1,19 @@
 package hiber.model;
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-
 public class User {
 
    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
    private Car car;
+   public User(Car car) {
+      this.car = car;
+   }
 
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
